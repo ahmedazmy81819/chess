@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="container">
+    <!-- واجهة البداية -->
     <div id="start-screen">
       <h1>مرحبًا بكم في لعبة الشطرنج!</h1>
       <button id="play-with-friend">العب مع صديق</button>
@@ -15,18 +16,31 @@
       <button id="create-account">إنشاء حساب</button>
       <button id="delete-account">حذف الحساب</button>
     </div>
+
+    <!-- واجهة اللعبة -->
     <div id="game-screen" style="display: none;">
       <h1 id="game-title">شطرنج مع رسوم متحركة</h1>
       <div id="chessboard"></div>
       <div id="status"></div>
       <button id="back-to-start">العودة إلى البداية</button>
     </div>
-    <div id="account-screen" style="display: none;">
+
+    <!-- واجهة إنشاء الحساب -->
+    <div id="create-account-screen" style="display: none;">
       <h1>إنشاء حساب جديد</h1>
-      <input type="text" id="username" placeholder="اسم المستخدم">
-      <input type="password" id="password" placeholder="كلمة السر">
-      <button id="submit-account">إنشاء الحساب</button>
-      <button id="cancel-account">إلغاء</button>
+      <input type="text" id="new-username" placeholder="اسم المستخدم">
+      <input type="password" id="new-password" placeholder="كلمة السر">
+      <button id="submit-create-account">إنشاء الحساب</button>
+      <button id="cancel-create-account">إلغاء</button>
+    </div>
+
+    <!-- واجهة حذف الحساب -->
+    <div id="delete-account-screen" style="display: none;">
+      <h1>حذف حساب</h1>
+      <input type="text" id="delete-username" placeholder="اسم المستخدم">
+      <input type="password" id="delete-password" placeholder="كلمة السر">
+      <button id="submit-delete-account">حذف الحساب</button>
+      <button id="cancel-delete-account">إلغاء</button>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
