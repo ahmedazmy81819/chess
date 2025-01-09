@@ -1,16 +1,21 @@
 // عناصر الواجهة
 const startScreen = document.getElementById('start-screen');
 const gameScreen = document.getElementById('game-screen');
-const accountScreen = document.getElementById('account-screen');
+const createAccountScreen = document.getElementById('create-account-screen');
+const deleteAccountScreen = document.getElementById('delete-account-screen');
 const playWithFriendBtn = document.getElementById('play-with-friend');
 const playWithComputerBtn = document.getElementById('play-with-computer');
 const createAccountBtn = document.getElementById('create-account');
 const deleteAccountBtn = document.getElementById('delete-account');
 const backToStartBtn = document.getElementById('back-to-start');
-const submitAccountBtn = document.getElementById('submit-account');
-const cancelAccountBtn = document.getElementById('cancel-account');
-const usernameInput = document.getElementById('username');
-const passwordInput = document.getElementById('password');
+const submitCreateAccountBtn = document.getElementById('submit-create-account');
+const cancelCreateAccountBtn = document.getElementById('cancel-create-account');
+const submitDeleteAccountBtn = document.getElementById('submit-delete-account');
+const cancelDeleteAccountBtn = document.getElementById('cancel-delete-account');
+const newUsernameInput = document.getElementById('new-username');
+const newPasswordInput = document.getElementById('new-password');
+const deleteUsernameInput = document.getElementById('delete-username');
+const deletePasswordInput = document.getElementById('delete-password');
 
 // بيانات الحسابات
 let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
@@ -19,21 +24,32 @@ let accounts = JSON.parse(localStorage.getItem('accounts')) || [];
 function showStartScreen() {
   startScreen.style.display = 'block';
   gameScreen.style.display = 'none';
-  accountScreen.style.display = 'none';
+  createAccountScreen.style.display = 'none';
+  deleteAccountScreen.style.display = 'none';
 }
 
 // عرض واجهة اللعبة
 function showGameScreen() {
   startScreen.style.display = 'none';
   gameScreen.style.display = 'block';
-  accountScreen.style.display = 'none';
+  createAccountScreen.style.display = 'none';
+  deleteAccountScreen.style.display = 'none';
 }
 
 // عرض واجهة إنشاء الحساب
-function showAccountScreen() {
+function showCreateAccountScreen() {
   startScreen.style.display = 'none';
   gameScreen.style.display = 'none';
-  accountScreen.style.display = 'block';
+  createAccountScreen.style.display = 'block';
+  deleteAccountScreen.style.display = 'none';
+}
+
+// عرض واجهة حذف الحساب
+function showDeleteAccountScreen() {
+  startScreen.style.display = 'none';
+  gameScreen.style.display = 'none';
+  createAccountScreen.style.display = 'none';
+  deleteAccountScreen.style.display = 'block';
 }
 
 // إنشاء حساب جديد
@@ -45,8 +61,8 @@ function createAccount(username, password) {
 }
 
 // حذف حساب
-function deleteAccount(username) {
-  accounts = accounts.filter(account => account.username !== username);
+function deleteAccount(username, password) {
+  accounts = accounts.filter(account => account.username !== username || account.password !== password);
   localStorage.setItem('accounts', JSON.stringify(accounts));
   alert('تم حذف الحساب بنجاح!');
 }
@@ -68,23 +84,20 @@ playWithComputerBtn.addEventListener('click', () => {
 });
 
 createAccountBtn.addEventListener('click', () => {
-  showAccountScreen();
+  showCreateAccountScreen();
 });
 
 deleteAccountBtn.addEventListener('click', () => {
-  const username = prompt('أدخل اسم المستخدم لحذف الحساب:');
-  if (username) {
-    deleteAccount(username);
-  }
+  showDeleteAccountScreen();
 });
 
 backToStartBtn.addEventListener('click', () => {
   showStartScreen();
 });
 
-submitAccountBtn.addEventListener('click', () => {
-  const username = usernameInput.value;
-  const password = passwordInput.value;
+submitCreateAccountBtn.addEventListener('click', () => {
+  const username = newUsernameInput.value;
+  const password = newPasswordInput.value;
   if (username && password) {
     createAccount(username, password);
     showStartScreen();
@@ -93,7 +106,22 @@ submitAccountBtn.addEventListener('click', () => {
   }
 });
 
-cancelAccountBtn.addEventListener('click', () => {
+cancelCreateAccountBtn.addEventListener('click', () => {
+  showStartScreen();
+});
+
+submitDeleteAccountBtn.addEventListener('click', () => {
+  const username = deleteUsernameInput.value;
+  const password = deletePasswordInput.value;
+  if (username && password) {
+    deleteAccount(username, password);
+    showStartScreen();
+  } else {
+    alert('يرجى ملء جميع الحقول!');
+  }
+});
+
+cancelDeleteAccountBtn.addEventListener('click', () => {
   showStartScreen();
 });
 
