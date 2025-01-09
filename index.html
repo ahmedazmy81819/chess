@@ -8,9 +8,26 @@
 </head>
 <body>
   <div class="container">
-    <h1>شطرنج مع رسوم متحركة</h1>
-    <div id="chessboard"></div>
-    <div id="status"></div>
+    <div id="start-screen">
+      <h1>مرحبًا بكم في لعبة الشطرنج!</h1>
+      <button id="play-with-friend">العب مع صديق</button>
+      <button id="play-with-computer">العب مع الكمبيوتر</button>
+      <button id="create-account">إنشاء حساب</button>
+      <button id="delete-account">حذف الحساب</button>
+    </div>
+    <div id="game-screen" style="display: none;">
+      <h1 id="game-title">شطرنج مع رسوم متحركة</h1>
+      <div id="chessboard"></div>
+      <div id="status"></div>
+      <button id="back-to-start">العودة إلى البداية</button>
+    </div>
+    <div id="account-screen" style="display: none;">
+      <h1>إنشاء حساب جديد</h1>
+      <input type="text" id="username" placeholder="اسم المستخدم">
+      <input type="password" id="password" placeholder="كلمة السر">
+      <button id="submit-account">إنشاء الحساب</button>
+      <button id="cancel-account">إلغاء</button>
+    </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
