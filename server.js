@@ -3,15 +3,18 @@ const startScreen = document.getElementById('start-screen');
 const gameScreen = document.getElementById('game-screen');
 const createAccountScreen = document.getElementById('create-account-screen');
 const deleteAccountScreen = document.getElementById('delete-account-screen');
+
 const playWithFriendBtn = document.getElementById('play-with-friend');
 const playWithComputerBtn = document.getElementById('play-with-computer');
 const createAccountBtn = document.getElementById('create-account');
 const deleteAccountBtn = document.getElementById('delete-account');
 const backToStartBtn = document.getElementById('back-to-start');
+
 const submitCreateAccountBtn = document.getElementById('submit-create-account');
 const cancelCreateAccountBtn = document.getElementById('cancel-create-account');
 const submitDeleteAccountBtn = document.getElementById('submit-delete-account');
 const cancelDeleteAccountBtn = document.getElementById('cancel-delete-account');
+
 const newUsernameInput = document.getElementById('new-username');
 const newPasswordInput = document.getElementById('new-password');
 const deleteUsernameInput = document.getElementById('delete-username');
@@ -65,11 +68,6 @@ function deleteAccount(username, password) {
   accounts = accounts.filter(account => account.username !== username || account.password !== password);
   localStorage.setItem('accounts', JSON.stringify(accounts));
   alert('تم حذف الحساب بنجاح!');
-}
-
-// التحقق من الحساب
-function checkAccount(username, password) {
-  return accounts.some(account => account.username === username && account.password === password);
 }
 
 // أحداث الأزرار
